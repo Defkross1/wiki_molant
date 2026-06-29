@@ -15,8 +15,8 @@
 
 # Fase de Depuración: Errores Críticos de Compilación (PostCSS / JSX Tokens)
 **Herramienta Utilizada:** Chatbot Externo (Gemini)
-**Prompt Textual Aplicado:** *"Tengo un error de renderizado en Vite de tipo ts(1382) 'Unexpected token' provocado por caracteres de flechas en un esquema de red, y además fallos de PostCSS de tipo ENOENT al intentar resolver la directiva @import de Tailwind v4 en mi disco C. Ayúdame a solucionar ambos problemas para estabilizar el servidor."*
-* **Resultado:** Se identificó que el compilador interpretaba el carácter `>` como el cierre erróneo de una etiqueta HTML. Se aplicó una reestructuración de la topología usando caracteres de bloques protegidos y se desacopló el procesamiento pesado del archivo CSS.
+**Prompt Textual Aplicado:** "Tengo un error de renderizado en Vite de tipo ts(1382) 'Unexpected token' provocado por caracteres de flechas en un esquema de red, y además fallos de PostCSS de tipo ENOENT al intentar resolver la directiva @import de Tailwind v4 en mi disco C. Ayúdame a solucionar ambos problemas para estabilizar el servidor."
+ **Resultado:** Se identificó que el compilador interpretaba el carácter `>` como el cierre erróneo de una etiqueta HTML. Se aplicó una reestructuración de la topología usando caracteres de bloques protegidos y se desacopló el procesamiento pesado del archivo CSS.
 
 ------------------------------------------------------
 
@@ -27,7 +27,7 @@ Durante el desarrollo de la wiki web se presentaron dos desviaciones críticas q
 1. **Sintaxis de Clases en Componentes:** La IA inicialmente sugirió inyectar las clases de Tailwind de forma directa en los botones sin las comillas correspondientes (`className={flex...}`). Esto rompía el árbol de renderizado de React. Se corrigió manualmente envolviendo los literales en cadenas de texto tradicionales (`className="flex..."`).
 2. **Rutas del Compilador CSS:** Al utilizar Tailwind v4, las directivas `@apply` y `@theme` arrojaban advertencias en el editor y errores `ENOENT` al buscar carpetas físicas locales. La solución adoptada fue vaciar las reglas complejas de `src/index.css` e implementar la inyección nativa del framework directamente en la cabecera de `index.html` para asegurar un entorno de ejecución ligero y libre de fallos de compilación local.
 
----
+------------------------------------------------------
 
 # 3. Reflexión Final: Uso de IA como Agente vs Chatbot
 
