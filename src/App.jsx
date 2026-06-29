@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Server, BookOpen, Layers } from 'lucide-react';
+import { Server, BookOpen, Layers, Network } from 'lucide-react';
 import Inicio from './components/Inicio';
 import Instalacion from './components/Instalacion';
+import ActiveDirectory from './components/ActiveDirectory';
 
 function App() {
-  // Estado para controlar qué sección ve el usuario en la wiki
   const [seccionActiva, setSeccionActiva] = useState('inicio');
 
   return (
@@ -32,9 +32,7 @@ function App() {
           <button
             onClick={() => setSeccionActiva('inicio')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-colors whitespace-nowrap ${
-              seccionActiva === 'inicio'
-                ? 'bg-slate-900 text-white'
-                : 'text-slate-600 hover:bg-slate-100'
+              seccionActiva === 'inicio' ? 'bg-slate-900 text-white' : 'text-slate-600 hover:bg-slate-100'
             }`}
           >
             <BookOpen size={14} />
@@ -44,13 +42,21 @@ function App() {
           <button
             onClick={() => setSeccionActiva('instalacion')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-colors whitespace-nowrap ${
-              seccionActiva === 'instalacion'
-                ? 'bg-slate-900 text-white'
-                : 'text-slate-600 hover:bg-slate-100'
+              seccionActiva === 'instalacion' ? 'bg-slate-900 text-white' : 'text-slate-600 hover:bg-slate-100'
             }`}
           >
             <Layers size={14} />
             2.1.1 Config. Básica
+          </button>
+
+          <button
+            onClick={() => setSeccionActiva('ad')}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-colors whitespace-nowrap ${
+              seccionActiva === 'ad' ? 'bg-slate-900 text-white' : 'text-slate-600 hover:bg-slate-100'
+            }`}
+          >
+            <Network size={14} />
+            2.1.2 Active Directory
           </button>
         </div>
       </nav>
@@ -60,6 +66,7 @@ function App() {
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 md:p-8">
           {seccionActiva === 'inicio' && <Inicio />}
           {seccionActiva === 'instalacion' && <Instalacion />}
+          {seccionActiva === 'ad' && <ActiveDirectory />}
         </div>
       </main>
 
