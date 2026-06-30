@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Server, Shield, Network, Users, Monitor, HelpCircle, FileText, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { Server, Shield, Network, Users, Monitor, HelpCircle, FileText, CheckCircle2, AlertTriangle, Image } from 'lucide-react';
+import imgEvidencia02 from '../docs_molant/img_molant/02_ip_fija.png';
+import imgEvidencia03 from '../docs_molant/img_molant/03_usuarios_ou.png';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('01_inicio');
@@ -108,11 +110,25 @@ export default function App() {
               </h2>
               <div className="space-y-4 text-gray-300">
                 <p>Pasos fundamentales ejecutados inmediatamente después del despliegue del sistema operativo en el servidor base:</p>
-                <ul className="list-disc list-inside space-y-2 bg-gray-950 p-5 border border-gray-850 rounded-xl font-mono text-sm">
+                <ul className="list-disc list-inside space-y-2 bg-gray-950 p-5 border border-gray-850 rounded-xl font-mono text-sm mb-6">
                   <li><span className="text-blue-400">Asignación IP Estática:</span> IPv4: 192.168.10.2, Máscara: 255.255.255.0, DNS: 127.0.0.1</li>
                   <li><span className="text-blue-400">Cambio de Nombre del Host:</span> Configurado formalmente como <span className="text-white">DC-WINDOWS-2022</span>.</li>
-                  <li><span className="text-blue-400">Actualización y Parches:</span> Ejecución completa de Windows Update para mitigar vulnerabilidades críticas de día cero.</li>
+                  <li><span className="text-blue-400">Actualización y Parches:</span> Execution completa de Windows Update para mitigar vulnerabilidades críticas de día cero.</li>
                 </ul>
+
+                {/* CONTENEDOR PARA CAPTURA 02 */}
+                <div className="mt-6 bg-gray-950 border border-gray-850 rounded-xl p-4">
+                  <h3 className="text-sm font-semibold text-gray-400 flex items-center gap-2 mb-3">
+                   <Image className="w-4 h-4 text-blue-400" /> Evidencia Visual: Nombre de Equipo e IP Estática
+                 </h3>
+                  <div className="overflow-hidden rounded-lg border border-gray-800 bg-gray-900 flex justify-center p-2">
+                    <img 
+                      src={imgEvidencia02} 
+                      alt="Evidencia IP Fija y Nombre de Host" 
+                     className="max-w-full h-auto rounded object-contain border border-gray-800 shadow-md"
+                   />
+                  </div>
+                </div>
               </div>
             </div>
           )}
@@ -120,19 +136,29 @@ export default function App() {
           {/* SECCIÓN 3: ACTIVE DIRECTORY */}
           {activeTab === '03_active_directory' && (
             <div>
-              <h2 className="text-3xl font-bold text-gray-100 border-b border-gray-800 pb-4 mb-6 flex items-center gap-3">
+             <h2 className="text-3xl font-bold text-gray-100 border-b border-gray-800 pb-4 mb-6 flex items-center gap-3">
                 <Users className="text-blue-500" /> 2.1.2 Active Directory y Estructura Organizativa
               </h2>
               <div className="space-y-6">
                 <p className="text-gray-300">Promoción del servidor a Controlador de Dominio de un nuevo bosque llamado <span className="text-blue-400 font-semibold">inacap.local</span>.</p>
+      
                 <div className="p-6 bg-gray-950 border border-gray-850 rounded-xl">
                   <h3 className="text-md font-bold text-gray-200 mb-3">Jerarquía de Unidades Organizativas (OUs) y Cuentas</h3>
-                  <div className="font-mono text-sm space-y-1 text-gray-400">
-                    <p className="text-blue-400">└── inacap.local (Raíz del Dominio)</p>
-                    <p className="pl-6 text-yellow-500">└── 📁 OU_Corporativa_molant</p>
-                    <p className="pl-12 text-green-400">├── 📁 Usuarios_Soporte</p>
-                    <p className="pl-18 text-gray-300">└── 👤 Antolín Molina (Cuenta de Administrador Técnico)</p>
+                  <div className="font-mono text-sm space-y-1 text-gray-400 mb-6">
+                   <p className="text-blue-400">└── inacap.local (Raíz del Dominio)</p>
+                   <p className="pl-6 text-yellow-500">└── 📁 OU_Corporativa_molant</p>
+                   <p className="pl-12 text-green-400">├── 📁 Usuarios_Soporte</p>
+                   <p className="pl-18 text-gray-300">└── 👤 Antolín Molina (Cuenta de Administrador Técnico)</p>
                     <p className="pl-12 text-green-400">└── 📁 Equipos_Corporativos</p>
+                 </div>
+
+                  {/* Muestra Directa de la Captura 03 */}
+                  <div className="overflow-hidden rounded-lg border border-gray-800 bg-gray-900 flex justify-center p-2">
+                    <img 
+                      src={imgEvidencia03} 
+                      alt="Evidencia Active Directory" 
+                      className="max-w-full h-auto rounded object-contain border border-gray-800 shadow-md"
+                    />
                   </div>
                 </div>
               </div>
@@ -146,10 +172,20 @@ export default function App() {
                 <Monitor className="text-blue-500" /> 2.1.3 Vinculación del Cliente al Dominio
               </h2>
               <p className="text-gray-300 mb-4">Procedimiento técnico para añadir de forma segura la estación de trabajo al entorno centralizado:</p>
-              <div className="p-5 bg-gray-950 border border-gray-850 rounded-xl space-y-3 text-sm font-mono">
-                <p><span className="text-blue-400">Paso 1:</span> Configurar el DNS de la máquina Windows 10 apuntando a la IP del Servidor (192.168.10.2).</p>
-                <p><span className="text-blue-400">Paso 2:</span> Acceder a Propiedades del Sistema - Cambiar Configuración - Miembro del Dominio: <span className="text-white">inacap.local</span>.</p>
-                <p><span className="text-blue-400">Paso 3:</span> Autenticar la operación con las credenciales de administración del dominio creadas en la fase previa.</p>
+              
+              <div className="p-5 bg-gray-950 border border-gray-850 rounded-xl space-y-3 text-sm font-mono mb-6">
+                <p><span className="text-blue-400 font-bold">Paso 1:</span> Configurar el DNS de la máquina Windows 10 apuntando a la IP del Servidor (192.168.10.2).</p>
+                <p><span className="text-blue-400 font-bold">Paso 2:</span> Acceder a Propiedades del Sistema - Cambiar Configuración - Miembro del Dominio: <span className="text-white">inacap.local</span>.</p>
+                <p><span className="text-blue-400 font-bold">Paso 3:</span> Autenticar la operación con las credenciales de administración del dominio creadas en la fase previa.</p>
+              </div>
+
+              {/* Muestra Directa de la Captura Integrada del Cliente */}
+              <div className="overflow-hidden rounded-lg border border-gray-800 bg-gray-900 flex justify-center p-2">
+                <img 
+                  src={imgEvidencia06} 
+                  alt="Evidencia Estación Cliente en el Dominio" 
+                  className="max-w-full h-auto rounded object-contain border border-gray-800 shadow-md"
+                />
               </div>
             </div>
           )}
@@ -160,7 +196,7 @@ export default function App() {
               <h2 className="text-3xl font-bold text-gray-100 border-b border-gray-800 pb-4 mb-6 flex items-center gap-3">
                 <Network className="text-blue-500" /> 2.1.4 Configuración del Ámbito DHCP y Servicios DNS
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div className="bg-gray-950 p-6 border border-gray-850 rounded-xl">
                   <h3 className="text-lg font-bold text-blue-400 mb-4">Ámbito DHCP Activo</h3>
                   <table className="w-full text-sm font-mono text-left">
@@ -180,6 +216,22 @@ export default function App() {
                   </div>
                 </div>
               </div>
+
+              {/* CONTENEDOR PARA CAPTURA 05 */}
+              <div className="mt-6 bg-gray-950 border border-gray-850 rounded-xl p-4">
+                <h3 className="text-sm font-semibold text-gray-400 flex items-center gap-2 mb-3">
+                  <Image className="w-4 h-4 text-blue-400" /> Evidencia Visual: Ámbito DHCP y Concesiones Activas
+                </h3>
+                <div className="overflow-hidden rounded-lg border border-gray-800 bg-gray-900 flex justify-center">
+                  <img 
+                    src="img_molant/05_dhcp_ambito.png" 
+                    alt="Evidencia Ámbito DHCP" 
+                    className="max-w-full h-auto object-contain"
+                    onError={(e) => { e.target.style.display = 'none'; }}
+                  />
+                </div>
+                <p className="text-xs text-gray-500 mt-2 font-mono text-center">Ruta indexada: docs_molant/img_molant/05_dhcp_ambito.png</p>
+              </div>
             </div>
           )}
 
@@ -194,7 +246,7 @@ export default function App() {
                   <AlertTriangle className="w-5 h-5 text-yellow-500" /> Restricciones de Entorno Aplicadas
                 </h3>
                 <p className="text-sm text-gray-400 mb-4">Las políticas se enlazaron de manera exitosa a nivel de Unidad Organizativa para asegurar el cumplimiento normativo:</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-mono">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-mono mb-6">
                   <div className="p-4 bg-gray-900 border border-gray-800 rounded-lg">
                     <p className="text-blue-400 font-bold">GPO_Bloqueo_Panel</p>
                     <p className="text-gray-400 mt-1 text-xs">Inhabilita el acceso al Panel de Control y Configuración del sistema a los usuarios estándar.</p>
@@ -203,6 +255,22 @@ export default function App() {
                     <p className="text-blue-400 font-bold">GPO_Fondo_Corporativo</p>
                     <p className="text-gray-400 mt-1 text-xs">Establece por defecto un papel tapiz corporativo inmodificable mediante rutas de red UNC.</p>
                   </div>
+                </div>
+
+                {/* CONTENEDOR PARA CAPTURA 06 */}
+                <div className="mt-6 bg-gray-950 border border-gray-850 rounded-xl p-4">
+                  <h3 className="text-sm font-semibold text-gray-400 flex items-center gap-2 mb-3">
+                    <Image className="w-4 h-4 text-blue-400" /> Evidencia Visual: Verificación de Políticas de Grupo Habilitadas en Cliente
+                  </h3>
+                  <div className="overflow-hidden rounded-lg border border-gray-800 bg-gray-900 flex justify-center">
+                    <img 
+                      src="img_molant/06_gpo_aplicada.png" 
+                      alt="Evidencia GPO Aplicada" 
+                      className="max-w-full h-auto object-contain"
+                      onError={(e) => { e.target.style.display = 'none'; }}
+                    />
+                  </div>
+                  <p className="text-xs text-gray-500 mt-2 font-mono text-center">Ruta indexada: docs_molant/img_molant/06_gpo_aplicada.png</p>
                 </div>
               </div>
             </div>
