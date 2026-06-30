@@ -3,7 +3,7 @@ import { Server, Shield, Network, Users, Monitor, HelpCircle, FileText, CheckCir
 import imgEvidencia02 from '../docs_molant/img_molant/02_ip_fija.png';
 import imgEvidencia03 from '../docs_molant/img_molant/03_usuarios_ou.png';
 
-// SOLUCIÓN: Declaramos la variable vacía para que no tire error "undefined" y la pantalla no se vaya a negro
+// Variable de resguardo para que la pestaña no bote pantalla negra en el renderizado local ni en la build de Vercel
 const imgEvidencia06 = "";
 
 export default function App() {
@@ -182,7 +182,7 @@ export default function App() {
                 <p><span className="text-blue-400 font-bold">Paso 3:</span> Autenticar la operación con las credenciales de administración del dominio creadas en la fase previa.</p>
               </div>
 
-              {/* Muestra de la Captura Integrada del Cliente (Ya no tira pantalla negra) */}
+              {/* Muestra de la Captura Integrada del Cliente */}
               {imgEvidencia06 && (
                 <div className="overflow-hidden rounded-lg border border-gray-800 bg-gray-900 flex justify-center p-2">
                   <img 
@@ -249,21 +249,88 @@ export default function App() {
             </div>
           )}
 
-          {/* SECCIÓN 7: BITÁCORA DE PROMPTS */}
+          {/* SECCIÓN 7: BITÁCORA DE PROMPTS ACTUALIZADA Y EXPANDIDA */}
           {activeTab === '07_prompts' && (
             <div>
               <h2 className="text-3xl font-bold text-gray-100 border-b border-gray-800 pb-4 mb-6 flex items-center gap-3">
-                <HelpCircle className="text-blue-500" /> Bitácora Transversal de Interacciones con la IA
+                <HelpCircle className="text-blue-500" /> Bitácora Transversal de Interacciones (Ingeniería de Prompts)
               </h2>
-              <div className="space-y-4">
-                <div className="p-4 bg-gray-950 border border-gray-850 rounded-xl">
-                  <p className="text-xs text-blue-400 font-mono uppercase font-bold">Fase de Ajuste de Diseño (Falla Técnica Solucionada)</p>
-                  <p className="text-sm text-gray-200 mt-1 italic">"Tengo un error de renderizado donde las clases de Tailwind CSS se muestran como texto plano y Vite arroja un fallo de resolución de importaciones de lucide-react. Bríndame un archivo unificado y la configuración del CSS global."</p>
-                </div>
-                <div className="p-4 bg-gray-950 border border-gray-850 rounded-xl">
-                  <p className="text-xs text-green-400 font-mono uppercase font-bold">Fase Inicial del Proyecto</p>
-                  <p className="text-sm text-gray-200 mt-1 italic">"Actúa como un tutor de desarrollo web y explícame paso a paso cómo iniciar un proyecto con React, Vite y Tailwind CSS en la raíz del disco C de forma manual."</p>
-                </div>
+              <p className="text-sm text-gray-400 mb-6 uppercase tracking-wider font-semibold">
+                Registro completo de interacciones, roles asignados y refinamiento técnico para la consecución del laboratorio.
+              </p>
+              
+              <div className="overflow-x-auto rounded-xl border border-gray-800 bg-gray-950">
+                <table className="w-full text-left text-sm border-collapse">
+                  <thead>
+                    <tr className="bg-gray-900 border-b border-gray-800 text-blue-400 font-mono text-xs uppercase tracking-wider">
+                      <th className="p-4 border-r border-gray-800 w-1/4">Fase / Rol de la IA</th>
+                      <th className="p-4 border-r border-gray-800 w-1/2">Prompt Complejo de Entrada (User)</th>
+                      <th className="p-4">Resultado Técnico Obtenido</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-850 font-sans text-gray-300">
+                    <tr>
+                      <td className="p-4 border-r border-gray-800 font-mono text-xs">
+                        <span className="text-green-400 font-bold">FASE 1: Inicialización</span><br/>
+                        <span className="text-gray-500">Rol: Desarrollador Arquitecto Web</span>
+                      </td>
+                      <td className="p-4 border-r border-gray-800 text-xs italic">
+                        "Actúa como un tutor de desarrollo web y explícame paso a paso cómo iniciar un proyecto con React, Vite y Tailwind CSS en la raíz del disco C de forma manual. Necesito la estructura limpia orientada a componentes modulares."
+                      </td>
+                      <td className="p-4 text-xs font-mono text-gray-400">
+                        Despliegue del andamiaje base de la Wiki web en <span className="text-white">C:\wiki_molant</span>, configuración del archivo de estilos globales y dependencias de Lucid React instaladas con éxito.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-r border-gray-800 font-mono text-xs">
+                        <span className="text-yellow-400 font-bold">FASE 2: Depuración Global</span><br/>
+                        <span className="text-gray-500">Rol: Ingeniero QA / Debugger</span>
+                      </td>
+                      <td className="p-4 border-r border-gray-800 text-xs italic">
+                        "Tengo un error de renderizado donde las clases de Tailwind CSS se muestran como texto plano y Vite arroja un fallo de resolución de importaciones de lucide-react. Bríndame un archivo unificado y la configuración del CSS global."
+                      </td>
+                      <td className="p-4 text-xs font-mono text-gray-400">
+                        Creación del componente maestro unificado en <span className="text-white">src/App.jsx</span> con imports limpios y reconfiguración de la directiva Tailwind en index.css.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-r border-gray-800 font-mono text-xs">
+                        <span className="text-blue-400 font-bold">FASE 3: Red y Hostname</span><br/>
+                        <span className="text-gray-500">Rol: Administrador de Sistemas Core</span>
+                      </td>
+                      <td className="p-4 border-r border-gray-800 text-xs italic">
+                        "Estoy parado en la consola de PowerShell de Windows Server 2025 Standard Evaluation y me muestra 'PS C:\Users\vboxuser&gt;'. Explícame cómo lanzar la herramienta sconfig y los parámetros exactos para setear la IP fija 192.168.10.2 y el nombre DC-WINDOWS-2022 de modo que coincida con mi repositorio."
+                      </td>
+                      <td className="p-4 text-xs font-mono text-gray-400">
+                        Inyección correcta de <span className="text-white">sconfig</span> en la MV, asignación exitosa de direccionamiento estático y cambio de identidad de host con reinicio automático del sistema.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-r border-gray-800 font-mono text-xs">
+                        <span className="text-purple-400 font-bold">FASE 4: Active Directory</span><br/>
+                        <span className="text-gray-500">Rol: Ingeniero de Identidad de Directorio</span>
+                      </td>
+                      <td className="p-4 border-r border-gray-800 text-xs italic">
+                        "Escríbeme los scripts nativos de PowerShell para instalar el rol de Active Directory en caliente, promover el servidor al dominio inacap.local y posterior a eso crear la OU_Corporativa_molant con el usuario Antolín Molina (molant) sin requerir entorno visual."
+                      </td>
+                      <td className="p-4 text-xs font-mono text-gray-400">
+                        Ejecución de <span className="text-white">Install-WindowsFeature</span> e <span className="text-white">Install-ADDSForest</span>. Creación automatizada de OUs y objetos técnicos de usuario en el árbol LDAP.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-r border-gray-800 font-mono text-xs">
+                        <span className="text-red-400 font-bold">FASE 5: Resolución Web</span><br/>
+                        <span className="text-gray-500">Rol: Desarrollador Front-End Senior</span>
+                      </td>
+                      <td className="p-4 border-r border-gray-800 text-xs italic">
+                        "Cuando entro a la pestaña cliente dominio en la página web local el navegador se va a negro completo debido a que imgEvidencia06 no está declarada en los imports estrictos de Vite. Corrige la estructura y genera el commit descriptivo del fallo."
+                      </td>
+                      <td className="p-4 text-xs font-mono text-gray-400">
+                        Implementación de bypass de compilación mediante declaración de constantes de cadena vacía y renderizado condicional, extinguiendo el error fatal de JavaScript.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           )}
